@@ -1,0 +1,26 @@
+﻿
+using UnityEngine;
+
+public class playermovement : MonoBehaviour {
+
+    // this is a reference to the Rigidbody compnonent called "rb"
+    public Rigidbody rb;
+
+    public float forwardForce = 2000f;
+    public float sidewaysForce = 500f;
+	
+	// We Marked this as "FixedUpdate" because we are using it to mess with physics
+	void FixedUpdate () {
+        rb.AddForce(0, 0, forwardForce * Time.deltaTime);
+
+        if( Input.GetKey("d"))
+        {
+            rb.AddForce(sidewaysForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
+        }
+
+        if (Input.GetKey("a"))
+        {
+            rb.AddForce(-sidewaysForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
+        }
+    }
+}
